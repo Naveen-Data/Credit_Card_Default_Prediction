@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>XYZ BANK</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+</head>
+<body>
+	<h1>Credit Card Default Prediction</h1>
+	<div class="container">
+		<form  method = "POST" action="/predict" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="LIMIT_BAL">LIMIT_BAL</label>
+				<input type="text" class="form-control" id="LIMIT_BAL" name="LIMIT_BAL">
+			</div>
+			<div class="form-group">
+				<label for="AGE">AGE</label>
+				<input type="text" class="form-control" id="AGE" name="AGE" min="0" max="100">
+			</div>
+			<div class="form-group">
+				<label for="PAY_SEPT">Repayment Status in September</label>
+				<select class="form-control" id="PAY_SEPT" name="PAY_SEPT">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AUG">Repayment Status in August</label>
+				<select class="form-control" id="PAY_AUG" name="PAY_AUG">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+				</div>
+			<div class="form-group">
+				<label for="PAY_JUL">Repayment Status in July</label>
+				<select class="form-control" id="PAY_JUL" name="PAY_JUL">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="PAY_JUN">Repayment Status in June </label>
+				<select class="form-control" id="PAY_JUN" name="PAY_JUN">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="PAY_MAY">Repayment Status in May</label>
+				<select class="form-control" id="PAY_MAY" name="PAY_MAY">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="PAY_APR">Repayment Status in April</label>
+				<select class="form-control" id="PAY_APR" name="PAY_APR">
+					<option value=-1>Duly Paid</option>
+					<option value=1> 1 Month Delay</option>
+					<option value=2>2 Month Delay</option>
+					<option value=3>3 Month Delay</option>
+					<option value=4>4 Month Delay</option>
+					<option value=5>5 Month Delay</option>
+					<option value=6>6 Month Delay</option>
+					<option value=7>7 Month Delay</option>
+					<option value=8>8 Month Delay</option>
+					<option value=9>9 Month Delay</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_SEPT">Amount of Bill Statement in September</label>
+				<input type="text" class="form-control" id="BILL_AMT_SEPT" name="BILL_AMT_SEPT" required>
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_AUG">Amount of Bill Statement in August</label>
+				<input type="text" class="form-control" id="BILL_AMT_AUG" name="BILL_AMT_AUG" required>
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_JUL">Amount of Bill Statement in July</label>
+				<input type="text" class="form-control" id="BILL_AMT_JUL" name="BILL_AMT_JUL" required>
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_JUN">Amount of Bill Statement in June</label>
+				<input type="text" class="form-control" id="BILL_AMT_JUN" name="BILL_AMT_JUN" required>
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_MAY">Amount of Bill Statement in May</label>
+				<input type="text" class="form-control" id="BILL_AMT_MAY" name="BILL_AMT_MAY" required >
+			</div>
+			<div class="form-group">
+				<label for="BILL_AMT_APR">Amount of Bill Statement in April</label>
+				<input type="text" class="form-control" id="BILL_AMT_APR" name="BILL_AMT_APR" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_SEPT">Amount of Previous Payment in September</label>
+				<input type="text" class="form-control" id="PAY_AMT_SEPT" name="PAY_AMT_SEPT" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_AUG">Amount of Previous Payment in August</label>
+				<input type="text" class="form-control" id="PAY_AMT_AUG" name="PAY_AMT_AUG" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_JUL">Amount of Previous Payment in July</label>
+				<input type="text" class="form-control" id="PAY_AMT_JUL" name="PAY_AMT_JUL" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_JUN">Amount of Previous Payment in June</label>
+				<input type="text" class="form-control" id="PAY_AMT_JUN" name="PAY_AMT_JUN" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_MAY">Amount of Previous Payment in May</label>
+				<input type="text" class="form-control" id="PAY_AMT_MAY" name="PAY_AMT_MAY" required>
+			</div>
+			<div class="form-group">
+				<label for="PAY_AMT_APR">Amount of Previous Payment in April</label>
+				<input type="text" class="form-control" id="PAY_AMT_APR" name="PAY_AMT_APR" required>
+			</div>
+			<div class="form-group" required>
+				<label for="EDUCATION">EDUCATION</label>
+				<select class="form-control" id="EDUCATION" name="EDUCATION" placeholder="EDUCATION">
+					<option value=None>Select Education</option>
+					<option value=1>Graduate School</option>
+					<option value=2>University</option>
+					<option value=3>High School</option>
+					<option value=4>Others</option>
+				</select>
+			</div>
+			<div class="form-group" required>
+				<label for="MARRIAGE">MARRIAGE</label>
+				<select class="form-control" id="MARRIAGE" name="MARRIAGE">
+					<option value=None>Select Marriage</option>
+					<option value=1>Single</option>
+					<option value=2>Married</option>
+					<option value=3>Others</option>
+				</select>
+			</div>
+			<div class="form-group" required>
+				<label for="SEX"> SEX</label>
+				<select class="form-control" id="SEX" name="SEX">
+					<option value=None>Select Sex</option>
+					<option value=1>Male</option>
+					<option value=0>Female</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary" >Predict</button>
+		</form>
+		<br>
+		<div class="result" align="center">
+			{% if prediction_text %}
+				<p style="padding: 0.5%"><b>{{ prediction_text }}</b></p>
+			{% endif %}	
+		</div>
+	</div>
+</body>
+</html>
