@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app= Flask(__name__)
-URI = {{secrets.MONGO_URI}}
+URI = os.getenv("URI")
 # Create a new client and connect to the server
 client = MongoClient(URI)
 
