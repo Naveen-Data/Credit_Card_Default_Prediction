@@ -15,11 +15,11 @@ app= Flask(__name__)
 uri = os.getenv('uri')
 client = MongoClient(uri)
 coll = client.db.test
-try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-except Exception as e:
-    print(e)
+# try:
+#     client.admin.command('ping')
+#     print("Pinged your deployment. You successfully connected to MongoDB!")
+# except Exception as e:
+#     print(e)
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -114,7 +114,5 @@ def predict():
         raise CustomException(e,sys)
 
 if __name__=="__main__":
-    print('app is up')
-    app.run(port=5001,debug=True)
-    print('run app')
+    app.run(port=5000,debug=True)
     
