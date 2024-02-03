@@ -3,6 +3,7 @@
 
 import os
 import sys
+
 from src.logger import logging
 from src.exception import CustomException
 import pandas as pd
@@ -31,7 +32,7 @@ class TrainPipeline:
     def initiate_data_transformation(self,train_data_path,test_data_path):
         try:
             logging.info("Entered the data transformation method")
-            train_arr,test_arr = self.data_transformation.initialize_data_transformation(train_data_path,test_data_path)
+            train_arr,test_arr = self.data_transformation.initiate_data_transformation(train_data_path,test_data_path)
             return train_arr,test_arr
         except Exception as e:
             raise CustomException(e,sys)
@@ -40,7 +41,7 @@ class TrainPipeline:
     def initiate_model_training(self,train_arr,test_arr):
         try:
             logging.info("Entered the model training method")
-            return self.model_trainer.initate_model_training(train_arr,test_arr)
+            return self.model_trainer.initiate_model_trainer(train_arr,test_arr)
         except Exception as e:
             raise CustomException(e,sys)
 

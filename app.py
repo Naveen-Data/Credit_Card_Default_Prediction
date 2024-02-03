@@ -1,7 +1,7 @@
 
 import os
 import sys
-# from src.logger import loggin
+from src.logger import logging
 from src.exception import CustomException
 from flask import Flask, render_template, request
 import pandas as pd
@@ -12,14 +12,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 app= Flask(__name__)
-URI = os.getenv("URI")
-# Create a new client and connect to the server
-client = MongoClient(URI)
-
-# Send a ping to confirm a successful connection
-db = client['cluster0']
-collection = db['Test']
-
+uri = os.getenv('uri')
+client = MongoClient(uri)
+coll = client.db.test
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -101,7 +101,8 @@ def predict():
                         MARRIAGE_1, MARRIAGE_2, MARRIAGE_3
                         ]
             data = pd.DataFrame([features], columns=columns)
-            collection.insert_one(data.to_dict())
+            data_dict = {col: val for col, val in zip(columns, features)}
+            coll.insert_one(data_dict)
             default = PredictPipeline().predict(data)
             if default[0] == 1:
                 prediction_text = "The credit card holder will be Default in the next month"
@@ -113,5 +114,7 @@ def predict():
         raise CustomException(e,sys)
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",port=5000,debug=True)
+    print('app is up')
+    app.run(port=5001,debug=True)
+    print('run app')
     

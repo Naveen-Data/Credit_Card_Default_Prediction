@@ -3,12 +3,9 @@ import sys
 from dataclasses import dataclass
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
-from sklearn.ensemble import (
-    RandomForestClassifier,
-)
 
-from sklearn.metrics import f1_score
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import GaussianNB
 from xgboost import XGBClassifier
@@ -106,9 +103,9 @@ class ModelTrainer:
 
             predicted = best_model.predict(X_test)
             y_pred = best_model.predict(X_train)
-            training_score = f1_score(y_train, y_pred)
-            f1 = f1_score(y_test, predicted)
-            return f1, training_score
+            training_score = accuracy_score(y_train, y_pred)
+            test_accuracy = accuracy_score(y_test, predicted)
+            return test_accuracy, training_score
 
         except Exception as e:
             raise CustomException(e, sys)

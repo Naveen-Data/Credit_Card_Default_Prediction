@@ -1,14 +1,21 @@
 from flask import Flask
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo,MongoClient
 import os
 
 app= Flask(__name__)
-app.config['MONGO_URI'] = "mongodb+srv://CCDP:CCDP1234@cluster0.ipybsef.mongodb.net/?retryWrites=true&w=majority"
-# client = MongoClient("mongodb+srv://CCDP:CCDP1234@cluster0.7vkoanw.mongodb.net/?retryWrites=true&w=majority")
-mongo = PyMongo(app)
-db = mongo['cluster0']
+
+from pymongo.mongo_client import MongoClient
+
+uri = "mongodb+srv://CCDP1:NCnwhoNiPNOKwPal@cluster0.ipybsef.mongodb.net/?retryWrites=true&w=majority"
+
+# Create a new client and connect to the server
+client = MongoClient(uri)
+
+coll = client.db.test
+coll.insert_one({'name':'naveen'})
+# Send a ping to confirm a successful connection
 try:
-    mongo.admin.command('ping')
+    client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
