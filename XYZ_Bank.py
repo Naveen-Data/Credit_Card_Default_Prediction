@@ -12,9 +12,9 @@ load_dotenv()
 st.title('Credit Card Default Prediction')
 
 # MongoDB connection
-uri = os.getenv('uri')
-client = MongoClient(uri)
-coll = client.db.test
+# uri = os.getenv('uri')
+# client = MongoClient(uri)
+# coll = client.db.test
 
 LIMIT_BAL = st.text_input('LIMIT_BAL', '')
 AGE = st.text_input('AGE', '')
@@ -129,7 +129,7 @@ if submit_button:
                         ]
             data = pd.DataFrame([features],columns=columns)
             data_dict = {col: val for col, val in zip(columns, features)}
-            coll.insert_one(data_dict)
+            # coll.insert_one(data_dict)
             default = PredictPipeline().predict(data)
             if default[0] == 1:
                 prediction_text = "The credit card holder will be Default in the next month"
