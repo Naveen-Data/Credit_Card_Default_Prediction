@@ -102,7 +102,7 @@ def predict():
                         ]
             data = pd.DataFrame([features], columns=columns)
             data_dict = {col: val for col, val in zip(columns, features)}
-            coll.insert_one(data_dict)
+            # coll.insert_one(data_dict)
             default = PredictPipeline().predict(data)
             if default[0] == 1:
                 prediction_text = "The credit card holder will be Default in the next month"
